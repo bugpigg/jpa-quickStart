@@ -24,7 +24,6 @@
 - 다음 그림은 JDBC 의 구현 및 동작원리를 정리한 것
     ![image](https://user-images.githubusercontent.com/91416897/165459524-aec8e255-77d3-4968-840a-e92cdae1b0ba.png)
 
----
 - 과정
   - VO 클래스 작성 -> EmployeeVO 클래스
   - DAO 클래스 작성 -> EmployeeDAO 클래스
@@ -44,7 +43,6 @@
   - 자바코드와 SQL을 분리함
     SQL 매퍼라는 XML파일을 만들어서, DAO 클래스에서 사용할 SQL을 저장하고 관리함
     이렇게 분리하면, SQL 명령어들을 한 곳에 모아서 관리하기 때문에 SQL 검색도 쉽고 수정도 용이
----
 - 과정
   - SQL Mapper 작성
   - 마이바티스 메인 설정파일 작성
@@ -62,8 +60,6 @@
   - 개발자가 직접 SQL 을 관리해야한다는 문제점을 해결하기 위해 등장
   - ORM(Object-Relational Mapping) 프레임워크
   - 간단하게 설명하면, 객체와 테이블의 ROW 를 자동으로 매핑해주는 프레임워크이다!
-
----
 
 - 과정
   - 라이브러리 의존성 추가
