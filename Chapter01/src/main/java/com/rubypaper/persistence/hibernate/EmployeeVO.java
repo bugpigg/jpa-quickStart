@@ -28,4 +28,6 @@ public class EmployeeVO {
 
     private Double salary;
 
+    private String email;
+
 }
