@@ -98,5 +98,55 @@
 - 엔티티 클래스 작성 및 테이블 매핑
 - JPA의 메인 설정파일
   - `META-INF/persistence.xml` 
-- 
+- JPA를 이용한 등록,수정, 삭제 작업
+  - 반드시 해당 작업이 트랜잭션 안에서 수행되어야 함
+- 영속성 설정파일
+  - 다음 그림은 애플리케이션에서 EntityManger 객체를 획득하는 과정
+    ![image](https://user-images.githubusercontent.com/91416897/166643992-4c120711-0d1a-4a0f-85d0-c85eb2bd489e.png)
+  - 상세 코드는 `/src/test/java/com/rubypaper/chapter02/EmployeeSeviceClient.java` 참고
+  - 엔티티 클래스 등록 코드
+    `<class>com.rubypaper.chapter02.domain.Employee</class>`
+    - 클래스 패스 상에 존재하는 엔티티 클래스를 자동으로 인지하도록 JPA가 하고 있다.
+    그렇기에 생략 가능하다
+  - Dialect 클래스 설정
+    - 데이터베이스가 변경되면 관련 SQL을 수정해야할 가능성이 높다.
+    - 하지만 JPA에서는 필요한 SQL을 자동으로 생성해주기에 변경 가능하다.
+    - JPA가 특정 데이터베이스에 특화된 SQL을 생성할 수 있는 것은 영속성 유닛에 설정된 Dialect 클래스 때문이다.
+  - SQL 관련 설정
+    - `hdm2ddl.auto` 설정
+      - create
+        - app 실행할때, 기존 테이블 삭제하고 엔티티에 설정된 매핑 정보 참조하여 테이블 생성
+      - create-drop
+        - create와 같지만, 종료 직전에 생성된 테이블 삭제
+      - update
+        - 기존 테이블이 존재한다면, 재사용
+- 엔티티 매핑 설정하기
+  - `@Entity` 와 `@Id`
+    - 다른 엔티티와 구분하기 위한 유일한 엔티티 이름이 필요
+    - `name` 속성이 지정되어 있지 않으면, 자동으로 클래스 이름 사용
+    - 이는 후에 JPQL을 활용할 때 고려해야할 사항
+  - `@Table`
+    - 엔티티 이름과 테이블 이름을 매핑하기 위해 사용
+    - `uniqueConstraints` 
+      - 결합 unique 제약 조건을 지정하기 위해 사용
+  - `@Column`
+    - 클래스 멤버 변수와 테이블 칼럼을 매핑하기 위해 사용
+    - NULL 방지를 위해서도 사용
+  - `@Temporal`
+    - `java.util.Date` 타입의 변수에 사용 가능
+    - 날짜는 `DATE`, 시간은 `TIME`, 날짜와 시간은 `TIMESTAMP`
+    - 설정하지 않으면, 기본값은 `TIMESTAMP`
+  - `@Transient` 
+    - 임시로 사용되는 변수들
+    - 매핑에서 제외되어야 하는 변수들
+  - `@Access`
+    - JPA가 엔티티의 멤버변수에 접근하는 방식을 설정
+    - 만약 생략하면,
+      - `@Id` 가 설정된 위치를 기준으로 자동 결정
+        - 필드위에 있으면 `AccessType.FIELD`로 적용
+          - 멤버 변수에 직접 접근
+        - Getter 메소드에 설정되면 `AccessType.PROPERTY`로 적용
+          - Getter, Setter 메소드를 통해 접근
+    - 가독성을 위해서는, `AccessType.FIELD` 를 활용하자
+
 </details>
