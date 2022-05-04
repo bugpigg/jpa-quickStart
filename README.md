@@ -75,3 +75,28 @@
       - 그러면 실제 DB 테이블에 해당 칼럼으로 매핑되어 추가된다!
       - **더이상 데이터 관리에 얽매이지 않게 되었다!!**
 </details>
+
+<br>
+
+### Chapter02 JPA 퀵스타트 및 JPA 설정
+
+<details>
+<summary>Section01 JPA 퀵스타트</summary>
+
+- ORM
+  - 하이버네이트를 떠올리기 쉽지만, 프레임워크 중 하나일 뿐
+  - 자바 표준은 JPA
+- 영속성
+  - 데이터가 메모리가 아닌 데이터베이스에 저장되어 지속되려는 성질을 의미
+
+### JPA 퀵스타트
+- JPA는 JDBC 처럼 데이터베이스 연동을 지원하는 API
+- 다음 그림은 JPA 위치와 동작방식을 묘사한 것
+  ![image](https://user-images.githubusercontent.com/91416897/166636358-ab31336e-0f7c-4f00-a5e4-05436ac8db4a.png)
+  - JPA 구현체를 얼마든지 다른것으로 교체 가능
+- JPA 초기환경 설정
+- 엔티티 클래스 작성 및 테이블 매핑
+- JPA의 메인 설정파일
+  - `META-INF/persistence.xml` 
+- 
+</details>
